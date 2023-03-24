@@ -8,7 +8,7 @@ class Map:
         
     def getCity(self, name):
         for city in self.cities:
-            if city.name == name:
+            if city.name.upper() == name.upper():
                 return city
         return None
     
@@ -18,3 +18,6 @@ class Map:
                 self.cities.remove(city)
                 return True
         return False
+    
+    def getCities(self):
+        return self.cities
