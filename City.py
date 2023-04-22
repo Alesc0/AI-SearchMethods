@@ -1,8 +1,12 @@
 class City:
-    def __init__ (self, name):
+    def __init__ (self, name, latitude = 0, longitude = 0):
         self.name = name
         self.adjacentCities = []
         self.distances = []
+        self.location = (latitude, longitude)
+
+    def __str__ (self):
+        return self.name
         
     def addAdjacentCity(self, city,distance=0):
         if distance != 0:
