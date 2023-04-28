@@ -14,8 +14,8 @@ def loadCities(Map):
     Viseu = City("Viseu", 40.6575, -7.91428)
     Guarda = City("Guarda", 40.5371, -7.26785)
     Coimbra = City("Coimbra", 40.2115, -8.4292)
-    CasteloBranco = City("Castelo Branco", 39.8239, 7.49189)
-    Leiria = City("Leiria", 39.7443, 8.80725)
+    CasteloBranco = City("Castelo Branco", 39.8239, -7.49189)
+    Leiria = City("Leiria", 39.7443, -8.80725)
     Santarem = City("Santarém", 39.2362, -8.68707)
     Lisboa = City("Lisboa", 38.7071, -9.13549)
     Setubal = City("Setúbal", 38.5245, -8.89307)
@@ -35,6 +35,10 @@ def loadCities(Map):
     Porto.addAdjacentCity(VilaReal,116)
     Porto.addAdjacentCity(Braga,53)
     Porto.addAdjacentCity(Viseu,133)
+    Porto.addAdjacentCity(Aveiro,68)
+
+    Braganca.addAdjacentCity(VilaReal,137)
+    Braganca.addAdjacentCity(Guarda,202)
 
     VilaReal.addAdjacentCity(Porto,116)
     VilaReal.addAdjacentCity(Braganca,137)
@@ -95,6 +99,8 @@ def loadCities(Map):
     Evora.addAdjacentCity(Lisboa,150)
     Evora.addAdjacentCity(Setubal,103)
     Evora.addAdjacentCity(Beja,78)
+    Evora.addAdjacentCity(CasteloBranco,203)
+    Evora.addAdjacentCity(Santarem,117)
 
     Beja.addAdjacentCity(Evora,78)
     Beja.addAdjacentCity(Faro,152)

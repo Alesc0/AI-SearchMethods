@@ -19,3 +19,9 @@ class City:
         
     def getDistance(self, city):
         return self.distances[self.adjacentCities.index(city)]
+    """ 
+    def __lt__(self, other):
+        return False
+    
+    def __eq__(self, other):
+        return False """

@@ -1,23 +1,42 @@
+from queue import PriorityQueue
+from City import City
+from copy import deepcopy
+
+
 class UCS:
     def __init__(self):
-        self.path = []
+        self.nodes = []
         self.visited = []
+        self.path = []
 
-    def ucs(self,start,end):
-        self.path.append(start)
-        self.visited.append(start)
-        if start == end:
+    def ucs(self, start, end, distance=0):
+        if start.name == end.name:
             return True
-        nodes = start.adjacentCities.copy()
-        nodes.sort(key=lambda x: start.getDistance(x))
-        for node in nodes:
+
+        for node in start.adjacentCities:
+            self.nodes.append(
+                [start.getDistance(node) + distance, node, start])
+
+        self.nodes.sort(key=lambda x: x[0])
+
+        for dis, node, startNode in self.nodes:
             if node not in self.visited:
-                if self.ucs(node, end):
+                distance = dis
+                self.visited.append(node)
+                if self.ucs(node, end, distance):
                     return True
-        self.path.pop()
         return False
-    
+
     def getPath(self, start, end):
         self.ucs(start, end)
+        self.getPathRecursive(start, end)
         return self.path
-            
+
+    def getPathRecursive(self, start, end):
+        self.path.append(end)
+        if start.name == end.name:
+            return
+        for index, item in enumerate(self.nodes):
+            if item[1].name == end.name:
+                self.getPathRecursive(start, self.nodes[index][2])
+                break

@@ -14,9 +14,17 @@ end = Portugal.getCity("Faro")
 if len(sys.argv) == 3:
     start = Portugal.getCity(sys.argv[1])
     end = Portugal.getCity(sys.argv[2])
+else :
+    print("No arguments passed")
 
-path, path_distance = AStar().getPath(start, end)
+""" for i in Portugal.getCities():
+    print(i.name,":")
+    for j in i.adjacentCities:
+        print("\n\t",j.name, i.getDistance(j))
+ """
+ 
+path,distance = AStar().getPath(start, end)
 
 for item in path:
     print (item.name)
-print("Total Distance: " + str(path_distance) + " km")
+print(distance)
