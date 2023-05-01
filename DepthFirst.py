@@ -17,4 +17,7 @@ class DepthFirst:
 
     def getPath(self, start, end):
         self.dfs(start, end)
-        return self.path
+        distance = 0
+        for i in range(len(self.path) - 1):
+            distance += self.path[i].getDistance(self.path[i + 1])
+        return self.path, distance
