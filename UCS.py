@@ -30,7 +30,16 @@ class UCS:
     def getPath(self, start, end):
         self.ucs(start, end)
         self.getPathRecursive(start, end)
-        return self.path
+        self.path.reverse()
+        return self.path, self.calcDistance()
+    
+    def calcDistance(self):
+        distance = 0
+        for i in self.path:
+            if i == self.path[-1]:
+                break
+            distance += i.getDistance(self.path[self.path.index(i) + 1])
+        return distance
 
     def getPathRecursive(self, start, end):
         self.path.append(end)

@@ -3,7 +3,7 @@ from tkinter import messagebox
 import tkinter.ttk as ttk
 import tkintermapview
 from AStar import AStar
-
+from GreedySearch import GreedySearch
 from DepthFirst import DepthFirst
 from UCS import UCS
 
@@ -43,7 +43,7 @@ class UserInterface:
         self.algorithm_label = algorithm_label
         algorithm_combo_box = ttk.Combobox(left_frame, width=20)
         algorithm_combo_box.pack(pady=10)
-        algorithm_combo_box["values"] = ("Depth First", "UCS", "A*")
+        algorithm_combo_box["values"] = ("Depth First", "UCS", "A*","Greedy Search")
         algorithm_combo_box.set("A*")
         self.algorithm_combo_box = algorithm_combo_box
 
@@ -108,6 +108,8 @@ class UserInterface:
             algorithm_class = UCS()
         elif algorithm_name == "A*":
             algorithm_class = AStar()
+        elif algorithm_name == "Greedy Search":
+            algorithm_class = GreedySearch()
 
         if algorithm_class is None:
             messagebox.showerror("Erro", "Algoritmo não encontrado.")
