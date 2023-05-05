@@ -12,12 +12,15 @@ class AStar:
     def a_star(self,start,end):
         self.open.append(start)
         self.g_costs[start] = 0
+        self.f_costs[start] = self.g_costs[start] + hs.haversine(start.location, end.location, unit=hs.Unit.KILOMETERS)
 
         while True:
             if len(self.open) == 0:
                 return False
 
-            current = self.open.pop(0)
+            # current = self.open.pop(0)
+            current = min(self.open, key=lambda x: self.f_costs[x])
+            self.open.remove(current)
             self.closed.append(current)
 
             if current == end:
@@ -45,13 +48,8 @@ class AStar:
         path = [end]
         path_distance = self.g_costs[end]
         
-        while parent:
-            path.append(parent)
-            
-            if self.parents.get(parent):
-                parent = self.parents[parent]
-            else:
-                parent = False
+        while path[-1] != start:
+            path.append(self.parents[path[-1]])
 
         path.reverse()
         
